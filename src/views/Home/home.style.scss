@@ -4,11 +4,18 @@
 .Home {
   display: flex;
   flex-direction: column;
-  max-width: 90vw;
   padding: rem(32px);
   border-radius: rem(8px);
   background-color: #fff;
   gap: rem(16px);
+
+  @media (min-width: 768px) {
+    max-width: rem(480px);
+  }
+
+  @media (max-width: 767px) {
+    max-width: 90vw;
+  }
 
   h1 {
     text-align: center;

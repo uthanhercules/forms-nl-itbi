@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Heading, Text, Switch, Button, Tooltip } from '@chakra-ui/react';
 
 import './home.style.scss';
 
 function Home() {
-  const [questions, setQuestions] = useState<boolean[]>([]);
-
-  useEffect(() => console.log(questions), [questions]);
-  useEffect(() => {
-    const totalOfQuestions = document.querySelectorAll('.question');
-    const value: any[] = [];
-
-    totalOfQuestions.forEach((item) => value.push(false));
-
-    setQuestions(value);
-  }, []);
+  const [questions, setQuestions] = useState<boolean[]>([false, false]);
 
   const markQuestion = (props: { question: number }) => {
     const index = props.question - 1;
@@ -27,9 +17,19 @@ function Home() {
     setQuestions(value);
   };
 
+  const verifyForm = () => {
+    const allTrue = questions.every((value) => value);
+
+    if (allTrue) {
+      return alert('Tudo lindo!');
+    }
+
+    return alert('Tudo feio!');
+  };
+
   return (
     <main className='Home'>
-      <Heading as='h1'>Título do Formulário</Heading>
+      <Heading as='h1'>Restituição de ITBI</Heading>
       <section className='question'>
         <Switch
           colorScheme='green'
@@ -61,7 +61,9 @@ function Home() {
             Não sei como verificar meu imposto de transmissão
           </Tooltip>
         </span>
-        <Button colorScheme='green'>Verificar</Button>
+        <Button onClick={() => verifyForm()} colorScheme='green'>
+          Verificar minha Situação
+        </Button>
       </section>
     </main>
   );
