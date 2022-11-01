@@ -74,9 +74,13 @@ function Home() {
     <>
       <article className='modal hidden'>
         <section className='body'>
-          <Heading as='h2'>{msg}</Heading>
-          {bodyMsg?.map((item) => (
-            <Text as='p'>{item}</Text>
+          <Heading color={status === 'PERFECT' ? 'green' : 'red'} as='h2'>
+            {msg}
+          </Heading>
+          {bodyMsg?.map((item, index) => (
+            <Text key={index} as='p'>
+              {item}
+            </Text>
           ))}
           <Button
             onClick={() => (status === 'PERFECT' ? redirect() : closeModal())}
