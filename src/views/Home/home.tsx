@@ -33,11 +33,13 @@ function Home() {
       ]);
     } else if (!questions[1] && questions[0]) {
       setStatus('NOTIME');
+      setMsg('Infelizmente, não há como pedir a restituição do valor pago');
       setBodyMsg([
         'Já que tem mais de 5 anos que o imóvel foi comprado, não é possível pedir judicialmente :/',
       ]);
     } else if (questions[1] && !questions[0]) {
       setStatus('NOVALUE');
+      setMsg('Infelizmente, não há como pedir a restituição do valor pago');
       setBodyMsg([
         'Já que o imposto foi calculado em cima do valor do negócio, do valor que efetivamente foi pago na venda, não é possível pedir judicialmente :/',
         'Só cabe o pedido de restituição nos casos em que o valor do imposto tenha sido calculado com base no valor venal de IPTU.',
